@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<form method="post" id="personForm" data-city-url="{% url 'bankapp:ajax_load_branch' %}" novalidate>
+    {% csrf_token %}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit">Save</button>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><script>
+    $("#id_district").change(function () {
+      const url = $("#personForm").attr("data-branch-url");
+      const districtId = $(this).val();
+
+      $.ajax({
+        url: url,
+        data: {
+          'district_id': districtId
+        },
+        success: function (data) {
+          $("#id_branch").html(data);
+        }
+      });
+
+    });
+  </script>
+
+
+</div>
+ {%for msg in messages%}
+ {{msg}}
+ {%endfor%}
+</div>
+{% endblock %}

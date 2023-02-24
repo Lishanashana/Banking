@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+Welcome
+
+{% endblock %}
+{% block title %}
+
+BANK SITE
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container">
+    <center><h1>Welcome</h1></center>
+</div>
+
+<div class="container text-right">
+  <br>
+  <a class="btn btn-primary" href="{% url 'bankapp:login' %}">Login</a>
+</div>
+
+
+{% endblock %}
